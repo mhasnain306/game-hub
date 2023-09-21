@@ -3,17 +3,17 @@ import platforms from "../data/platforms";
 import apiClient from "../services/api-client";
 import { FetchResponse } from "../services/api-client"
 
-interface Platforms {
+export interface Platform {
   id: number,
   name: string,
   slug: string
 }
 
 const usePlatform = () => {
-  return useQuery<FetchResponse<Platforms>, Error>({
+  return useQuery<FetchResponse<Platform>, Error>({
     queryKey: ["platforms"],
     queryFn: () => apiClient
-      .get<FetchResponse<Platforms>>("/platforms/lists/parents")
+      .get<FetchResponse<Platform>>("/platforms/lists/parents")
       .then(res => res.data),
     staleTime: 24 * 60 * 60 * 1000,
     initialData: { count: platforms.count, results: platforms.results }
