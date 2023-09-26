@@ -25,6 +25,10 @@ class APIClient<T> {
             .then(res => res.data);
     }
 
+    get = (id: string) => {
+        return apiClient.get<T>(this.endpoint + "/" + id).then(res => res.data);
+    }
+
 }
 
 export default APIClient;
