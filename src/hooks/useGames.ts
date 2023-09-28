@@ -6,10 +6,15 @@ import { Platform } from "./usePlatforms";
 import ms from "ms";
 import useGameQueryStore from "../store";
 
+interface Publisher {
+    id: number;
+    name: string
+}
 export interface Game {
     id: number;
     name: string;
     slug: string;
+    publishers: Publisher[];
     description_raw: string;
     background_image: string,
     parent_platforms: { platform: Platform }[],

@@ -1,8 +1,11 @@
-import { Heading, Spinner, Text } from "@chakra-ui/react";
+import { Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import axios from "axios";
 import React from "react";
 import { useParams } from "react-router-dom";
+import CriticScore from "../components/CriticScore";
+import DefinitionItem from "../components/DefinitionItem";
 import Expandable from "../components/Expandable";
+import GameAttributes from "../components/GameAttributes";
 import useGame from "../hooks/useGame";
 import { Game } from "../hooks/useGames";
 
@@ -16,6 +19,7 @@ const GameDetailsPage = () => {
     <>
       <Heading>{game.name}</Heading>
       <Expandable>{game.description_raw}</Expandable>
+      <GameAttributes game={game} />
     </>
   );
 };

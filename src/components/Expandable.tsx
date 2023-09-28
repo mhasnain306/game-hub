@@ -6,7 +6,7 @@ interface Props {
 }
 const Expandable = ({ children }: Props) => {
   const [isExpanded, setExpanded] = useState(false);
-  const shortTextLength = 200;
+  const shortTextLength = 300;
   if (!children) return null;
   if (children.length <= shortTextLength) return <Text>{children}</Text>;
   const summary = isExpanded
@@ -18,6 +18,7 @@ const Expandable = ({ children }: Props) => {
         {summary}
         <Button
           marginLeft={1}
+          fontWeight="bold"
           colorScheme="yellow"
           size={"xs"}
           onClick={() => setExpanded(!isExpanded)}
