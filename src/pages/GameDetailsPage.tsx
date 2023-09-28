@@ -1,4 +1,4 @@
-import { Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
+import { Box, Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import axios from "axios";
 import React from "react";
 import { useParams } from "react-router-dom";
@@ -18,13 +18,17 @@ const GameDetailsPage = () => {
   if (isLoading) return <Spinner />;
   if (error || !game) throw new Error("Unexpected error occured");
   return (
-    <>
-      <Heading>{game.name}</Heading>
-      <Expandable>{game.description_raw}</Expandable>
-      <GameAttributes game={game} />
-      <GameTrailer gameId={game.id} />
-      <GameScreenshots gameId={game.id} />
-    </>
+    <SimpleGrid spacing={5} columns={{ base: 1, md: 2 }}>
+      <Box>
+        <Heading>{game.name}</Heading>
+        <Expandable>{game.description_raw}</Expandable>
+        <GameAttributes game={game} />
+      </Box>
+      <Box>
+        <GameTrailer gameId={game.id} />
+        <GameScreenshots gameId={game.id} />
+      </Box>
+    </SimpleGrid>
   );
 };
 
